@@ -22,9 +22,11 @@ public class RockPaperScissors {
             for(int i = 0; i <= round; i++) {
                 System.out.println("********** Game Rules **********");
                 System.out.println("Please choose your hand - 1 = Rock, 2 = Paper, 3 = Scissors : ");
+                // users choice
+                int userHand = sc.nextInt();
 
                 // choices made by player and computer
-                userChoice(sc);
+                userChoice(userHand);
                 ComputersChoice(rd);
 
 
@@ -34,14 +36,13 @@ public class RockPaperScissors {
             System.out.println("You have provided an incorrect amount of rounds, goodbye!");
         }
 
-
-
     }
 
+    //method hand computer choice
     private static void ComputersChoice(Random rd) {
         // computers choice
         int randomBound = 3;
-        int computerHand = rd.nextInt(randomBound);
+        int computerHand = rd.nextInt(randomBound) + 1;
         if (computerHand == 1) {
             System.out.println("Computers choice: Rock");
         } else if (computerHand == 2) {
@@ -51,10 +52,7 @@ public class RockPaperScissors {
         }
     }
 
-    private static void userChoice(Scanner sc) {
-        // users choice
-        int userHand = sc.nextInt();
-        //while (userHand < 1 || userHand > 3){
+    private static void userChoice(int userHand) {
             if (userHand == 1) {
                 System.out.println("You choice: Rock");
             } else if (userHand == 2) {
@@ -64,8 +62,7 @@ public class RockPaperScissors {
             }else{
                 System.out.println("You have entered an incorrect hand");
                 System.out.println("Please try again");
-                userHand = sc.nextInt();
+                userChoice(userHand);
             }
-        //}
     }
 }
